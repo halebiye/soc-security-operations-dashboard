@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "python": "3.12.14",
+  "platform": "Linux",
+  "pytest": {
+    "passed": 103,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 2.34
+  },
+  "coverage": {
+    "covered_lines": 649,
+    "valid_lines": 657,
+    "percent": 98.78,
+    "cli_excluded": true
+  },
+  "browser_checks": 25,
+  "browser": "134.0.6998.35",
+  "docker": "not run: no Docker CLI/daemon available",
+  "github_actions": "configured; not executed remotely"
+}

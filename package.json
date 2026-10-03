@@ -1,0 +1,8 @@
+{
+  "name": "soc-dashboard-browser-checks",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Optional browser verification and portfolio screenshots; no frontend build step",
+  "scripts": {"test": "node scripts/browser_check.cjs", "screenshots": "node scripts/browser_check.cjs --screenshots"},
+  "devDependencies": {"playwright": "1.51.1"}
+}

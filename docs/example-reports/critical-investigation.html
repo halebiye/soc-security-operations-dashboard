@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOC Investigation Report</title>
+<style>
+body{font:14px/1.7 system-ui,sans-serif;color:#1e293b;background:#f1f5f9;max-width:1120px;margin:40px auto;padding:0 24px}header{background:#0d1728;color:#fff;padding:32px;border-radius:14px}h1{font-size:26px;line-height:1.25}h2{font-size:21px}.badge{display:inline-block;background:#e2e8f0;padding:3px 10px;border-radius:20px;font-weight:700}.critical{background:#ffe4e6;color:#9f1239}.high{background:#ffedd5;color:#9a3412}.medium{background:#fef3c7;color:#92400e}article{background:#fff;padding:26px;border:1px solid #dbe4ef;border-radius:12px;margin:20px 0;break-inside:avoid}table{width:100%;border-collapse:collapse;font-size:11px}th,td{text-align:left;padding:8px;border-bottom:1px solid #e2e8f0;word-break:break-word}th{background:#f8fafc}pre{white-space:pre-wrap;word-break:break-all;font-size:12px}small{color:#64748b}.recommendation{padding:16px;background:#ecfdf5;border-left:3px solid #10b981}.note{white-space:pre-wrap}.table-wrap{overflow:auto}@media print{body{margin:0;background:#fff;padding:0}article{break-inside:auto}header{color:#000;background:#fff;border-bottom:2px solid #000}th{background:#eee}}
+</style></head><body>
+<header><p>SYNTHETIC DATA · LOCAL MINI SIEM</p><h1>SOC Security Operations Dashboard<br>Investigation Report</h1><p>2 matching alerts · Generated 2026-10-03T07:45:29.316183+00:00</p></header>
+<p>Matching historical alerts; dataset statistics cover all ingested events.</p><p>Dataset: 553 events · 94 failed logins. A detection is a hypothesis requiring analyst validation.</p>
+<p>Filters: <code>{"severity": "critical"}</code></p>
+<article>
+<span class="badge critical">CRITICAL</span> <span class="badge">Investigating</span>
+<h2>ALR-0007 · Success after repeated failures</h2>
+<p>SOC-002 / v1.0 · 2026-10-01T12:45:00.000000+00:00 → 2026-10-01T12:46:00.000000+00:00</p>
+<p><strong>Source:</strong> 203.0.113.66 · <strong>Account:</strong> omar · <strong>Host:</strong> idp-01 · <strong>Service:</strong> sso</p>
+<p>Successful login for omar after 5 failures from the same source to the same host/service within 600s.</p><p class="recommendation"><strong>Investigation recommendation:</strong> Prioritize triage. Verify the user&#39;s session, MFA result, and subsequent activity. Escalate a confirmed unexpected session and document the evidence.</p>
+<h3>Matched evidence · 6 events</h3><div class="table-wrap"><table><thead><tr><th>Event</th><th>Timestamp (UTC)</th><th>Source</th><th>Account</th><th>Host / Service</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>demo-00512</td><td>2026-10-01T12:45:00.000000+00:00</td><td>203.0.113.66</td><td>omar</td><td>idp-01 / sso</td><td>authentication_failure</td></tr><tr><td>demo-00513</td><td>2026-10-01T12:45:07.000000+00:00</td><td>203.0.113.66</td><td>omar</td><td>idp-01 / sso</td><td>authentication_failure</td></tr><tr><td>demo-00514</td><td>2026-10-01T12:45:14.000000+00:00</td><td>203.0.113.66</td><td>omar</td><td>idp-01 / sso</td><td>authentication_failure</td></tr><tr><td>demo-00515</td><td>2026-10-01T12:45:21.000000+00:00</td><td>203.0.113.66</td><td>omar</td><td>idp-01 / sso</td><td>authentication_failure</td></tr><tr><td>demo-00516</td><td>2026-10-01T12:45:28.000000+00:00</td><td>203.0.113.66</td><td>omar</td><td>idp-01 / sso</td><td>authentication_failure</td></tr><tr><td>demo-00517</td><td>2026-10-01T12:46:00.000000+00:00</td><td>203.0.113.66</td><td>omar</td><td>idp-01 / sso</td><td>authentication_success</td></tr></tbody></table></div>
+<h3>Analyst activity</h3><p><small>2026-10-03T07:45:29.313784+00:00 · Detection engine · created</small><br><span class="note">Alert created from synthetic event evidence.</span></p><p><small>2026-10-03T07:45:29.315564+00:00 · Local analyst · status</small><br><span class="note">New → Investigating</span></p><p><small>2026-10-03T07:45:29.315564+00:00 · Local analyst · note</small><br><span class="note">Synthetic review: verified five failures followed by success for the same identity. MFA and user/session ownership are not available in this sample and need validation. No compromise conclusion is established.</span></p>
+<details><summary>Detection configuration snapshot</summary><pre>{
+  "aggregation_seconds": 900,
+  "business_end_hour": 18,
+  "business_start_hour": 9,
+  "business_timezone": "Europe/Istanbul",
+  "business_weekdays": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "failure_threshold": 5,
+  "failure_window_seconds": 300,
+  "privileged_accounts": [
+    "root",
+    "admin",
+    "svc_backup"
+  ],
+  "spike_threshold": 20,
+  "spike_window_seconds": 60,
+  "spray_account_threshold": 4,
+  "spray_window_seconds": 600,
+  "success_window_seconds": 600,
+  "suspicious_ips": [
+    "203.0.113.66"
+  ],
+  "version": "1.0"
+}</pre></details><p><small>Snapshot SHA-256: eef76f605d477738a35ecca605d3a3555aa3689c0026bf96ddfe90d117274c29</small></p>
+</article><article>
+<span class="badge critical">CRITICAL</span> <span class="badge">New</span>
+<h2>ALR-0003 · Success after repeated failures</h2>
+<p>SOC-002 / v1.0 · 2026-10-01T09:10:00.000000+00:00 → 2026-10-01T09:12:00.000000+00:00</p>
+<p><strong>Source:</strong> 198.51.100.42 · <strong>Account:</strong> muhammed · <strong>Host:</strong> vpn-gw-01 · <strong>Service:</strong> vpn</p>
+<p>Successful login for muhammed after 8 failures from the same source to the same host/service within 600s.</p><p class="recommendation"><strong>Investigation recommendation:</strong> Prioritize triage. Verify the user&#39;s session, MFA result, and subsequent activity. Escalate a confirmed unexpected session and document the evidence.</p>
+<h3>Matched evidence · 9 events</h3><div class="table-wrap"><table><thead><tr><th>Event</th><th>Timestamp (UTC)</th><th>Source</th><th>Account</th><th>Host / Service</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>demo-00481</td><td>2026-10-01T09:10:00.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00482</td><td>2026-10-01T09:10:15.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00483</td><td>2026-10-01T09:10:30.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00484</td><td>2026-10-01T09:10:45.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00485</td><td>2026-10-01T09:11:00.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00486</td><td>2026-10-01T09:11:15.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00487</td><td>2026-10-01T09:11:30.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00488</td><td>2026-10-01T09:11:45.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_failure</td></tr><tr><td>demo-00489</td><td>2026-10-01T09:12:00.000000+00:00</td><td>198.51.100.42</td><td>muhammed</td><td>vpn-gw-01 / vpn</td><td>authentication_success</td></tr></tbody></table></div>
+<h3>Analyst activity</h3><p><small>2026-10-03T07:45:29.313784+00:00 · Detection engine · created</small><br><span class="note">Alert created from synthetic event evidence.</span></p>
+<details><summary>Detection configuration snapshot</summary><pre>{
+  "aggregation_seconds": 900,
+  "business_end_hour": 18,
+  "business_start_hour": 9,
+  "business_timezone": "Europe/Istanbul",
+  "business_weekdays": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "failure_threshold": 5,
+  "failure_window_seconds": 300,
+  "privileged_accounts": [
+    "root",
+    "admin",
+    "svc_backup"
+  ],
+  "spike_threshold": 20,
+  "spike_window_seconds": 60,
+  "spray_account_threshold": 4,
+  "spray_window_seconds": 600,
+  "success_window_seconds": 600,
+  "suspicious_ips": [
+    "203.0.113.66"
+  ],
+  "version": "1.0"
+}</pre></details><p><small>Snapshot SHA-256: eef76f605d477738a35ecca605d3a3555aa3689c0026bf96ddfe90d117274c29</small></p>
+</article>
+<footer><p>Current configuration SHA-256: <small>eef76f605d477738a35ecca605d3a3555aa3689c0026bf96ddfe90d117274c29</small></p><p>Offline synthetic-data assessment. No collection, scanning, credential attacks, or automated response.</p></footer>
+</body></html>

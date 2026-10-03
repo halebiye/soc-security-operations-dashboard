@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "required_files": 21,
+  "sample_events": 553,
+  "sample_formats_equivalent": true,
+  "cli_seed_import_exports": "passed",
+  "screenshots": [
+    {
+      "file": "dashboard-desktop.png",
+      "width": 1480,
+      "height": 1536
+    },
+    {
+      "file": "alert-queue.png",
+      "width": 1480,
+      "height": 1080
+    },
+    {
+      "file": "alert-investigation.png",
+      "width": 1480,
+      "height": 1080
+    },
+    {
+      "file": "event-explorer.png",
+      "width": 1480,
+      "height": 1814
+    },
+    {
+      "file": "detection-rules.png",
+      "width": 1480,
+      "height": 1721
+    },
+    {
+      "file": "reports.png",
+      "width": 1480,
+      "height": 1080
+    },
+    {
+      "file": "dashboard-mobile.png",
+      "width": 390,
+      "height": 2805
+    },
+    {
+      "file": "investigation-mobile.png",
+      "width": 390,
+      "height": 2099
+    }
+  ]
+}

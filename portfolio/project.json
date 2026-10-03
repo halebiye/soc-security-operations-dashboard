@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "title": "SOC Security Operations Dashboard",
+  "slug": "soc-security-operations-dashboard",
+  "category": "Blue Team / SOC Engineering",
+  "level": "Beginner to intermediate",
+  "summary": "An offline Mini SIEM with explainable authentication detections, evidence-linked alerts, persistent analyst workflow, and portable investigation reports.",
+  "stack": [
+    "Python",
+    "FastAPI",
+    "SQLite",
+    "JavaScript",
+    "Chart.js",
+    "Pytest",
+    "Docker"
+  ],
+  "features": [
+    "Validated synthetic CSV/JSON ingestion",
+    "Seven explainable detection rules",
+    "Five dashboard charts",
+    "Evidence review and analyst notes",
+    "Versioned case workflow",
+    "HTML/JSON/Markdown reports"
+  ],
+  "metrics": {
+    "sample_events": 553,
+    "sample_alerts": 18,
+    "critical_alerts": 2,
+    "pytest_tests_passed": 103,
+    "browser_checks_passed": 25
+  },
+  "repository_url": null,
+  "planned_repository_url": "https://github.com/halebiye/soc-security-operations-dashboard",
+  "live_demo_url": null,
+  "author_github": "https://github.com/halebiye",
+  "safety": "Synthetic data only; loopback local lab; no offensive or automated response features.",
+  "assets": {
+    "cover": "portfolio/project-cover.png",
+    "icon": "portfolio/project-icon.svg",
+    "investigation": "docs/screenshots/alert-investigation.png",
+    "mobile": "docs/screenshots/dashboard-mobile.png"
+  },
+  "container_validation": "Not run locally: Docker daemon unavailable. CI smoke job is provided."
+}

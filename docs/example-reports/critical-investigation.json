@@ -1,0 +1,536 @@
+{
+  "project": "SOC Security Operations Dashboard",
+  "schema_version": 1,
+  "generated_at": "2026-10-03T07:45:29.316183+00:00",
+  "synthetic_only": true,
+  "scope": "Matching historical alerts; dataset statistics cover all ingested events.",
+  "filters": {
+    "severity": "critical"
+  },
+  "config_hash": "eef76f605d477738a35ecca605d3a3555aa3689c0026bf96ddfe90d117274c29",
+  "config": {
+    "version": "1.0",
+    "failure_threshold": 5,
+    "failure_window_seconds": 300,
+    "success_window_seconds": 600,
+    "spray_account_threshold": 4,
+    "spray_window_seconds": 600,
+    "spike_threshold": 20,
+    "spike_window_seconds": 60,
+    "aggregation_seconds": 900,
+    "privileged_accounts": [
+      "root",
+      "admin",
+      "svc_backup"
+    ],
+    "suspicious_ips": [
+      "203.0.113.66"
+    ],
+    "business_timezone": "Europe/Istanbul",
+    "business_start_hour": 9,
+    "business_end_hour": 18,
+    "business_weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "dataset_summary": {
+    "total_events": 553,
+    "total_alerts": 18,
+    "critical_alerts": 2,
+    "failed_logins": 94,
+    "successful_logins": 459,
+    "unique_sources": 38,
+    "severity": {
+      "critical": 2,
+      "high": 14,
+      "medium": 2,
+      "low": 0
+    },
+    "statuses": {
+      "New": 17,
+      "Investigating": 1,
+      "Closed": 0
+    },
+    "events_over_time": [
+      {
+        "timestamp": "2026-10-01T06:00:00.000000+00:00",
+        "success": 57,
+        "failure": 3
+      },
+      {
+        "timestamp": "2026-10-01T07:00:00.000000+00:00",
+        "success": 55,
+        "failure": 11
+      },
+      {
+        "timestamp": "2026-10-01T08:00:00.000000+00:00",
+        "success": 56,
+        "failure": 4
+      },
+      {
+        "timestamp": "2026-10-01T09:00:00.000000+00:00",
+        "success": 58,
+        "failure": 11
+      },
+      {
+        "timestamp": "2026-10-01T10:00:00.000000+00:00",
+        "success": 50,
+        "failure": 11
+      },
+      {
+        "timestamp": "2026-10-01T11:00:00.000000+00:00",
+        "success": 57,
+        "failure": 15
+      },
+      {
+        "timestamp": "2026-10-01T12:00:00.000000+00:00",
+        "success": 57,
+        "failure": 9
+      },
+      {
+        "timestamp": "2026-10-01T13:00:00.000000+00:00",
+        "success": 66,
+        "failure": 30
+      },
+      {
+        "timestamp": "2026-10-01T14:00:00.000000+00:00",
+        "success": 1,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T15:00:00.000000+00:00",
+        "success": 0,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T16:00:00.000000+00:00",
+        "success": 0,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T17:00:00.000000+00:00",
+        "success": 0,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T18:00:00.000000+00:00",
+        "success": 0,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T19:00:00.000000+00:00",
+        "success": 0,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T20:00:00.000000+00:00",
+        "success": 0,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T21:00:00.000000+00:00",
+        "success": 0,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T22:00:00.000000+00:00",
+        "success": 1,
+        "failure": 0
+      },
+      {
+        "timestamp": "2026-10-01T23:00:00.000000+00:00",
+        "success": 1,
+        "failure": 0
+      }
+    ],
+    "bucket_seconds": 3600,
+    "top_sources": [
+      {
+        "label": "203.0.113.180",
+        "count": 36
+      },
+      {
+        "label": "192.0.2.17",
+        "count": 26
+      },
+      {
+        "label": "192.0.2.35",
+        "count": 25
+      },
+      {
+        "label": "192.0.2.24",
+        "count": 23
+      },
+      {
+        "label": "192.0.2.21",
+        "count": 22
+      }
+    ],
+    "targeted_accounts": [
+      {
+        "label": "muhammed",
+        "count": 8
+      },
+      {
+        "label": "deniz",
+        "count": 7
+      },
+      {
+        "label": "omar",
+        "count": 7
+      },
+      {
+        "label": "burst_2",
+        "count": 6
+      },
+      {
+        "label": "burst_3",
+        "count": 6
+      }
+    ],
+    "first_event": "2026-10-01T06:00:03.000000+00:00",
+    "last_event": "2026-10-01T23:00:00.000000+00:00",
+    "latest_import": {
+      "id": 1,
+      "timestamp": "2026-10-03T07:45:29.314498+00:00",
+      "filename": "Synthetic scenario library",
+      "total": 553,
+      "inserted": 553,
+      "duplicates": 0,
+      "alerts_created": 18,
+      "config_hash": "eef76f605d477738a35ecca605d3a3555aa3689c0026bf96ddfe90d117274c29",
+      "duration_ms": 8.7
+    }
+  },
+  "alert_count": 2,
+  "alerts": [
+    {
+      "id": 7,
+      "fingerprint": "61cc2a89d72c0583d45a70cd0e5f83972a5639a0c872da053b2f3c17dc331bb6",
+      "rule_id": "SOC-002",
+      "rule_name": "Success after repeated failures",
+      "severity": "critical",
+      "source_ip": "203.0.113.66",
+      "username": "omar",
+      "hostname": "idp-01",
+      "service": "sso",
+      "first_seen": "2026-10-01T12:45:00.000000+00:00",
+      "last_seen": "2026-10-01T12:46:00.000000+00:00",
+      "explanation": "Successful login for omar after 5 failures from the same source to the same host/service within 600s.",
+      "recommendation": "Prioritize triage. Verify the user's session, MFA result, and subsequent activity. Escalate a confirmed unexpected session and document the evidence.",
+      "rule_version": "1.0",
+      "config_hash": "eef76f605d477738a35ecca605d3a3555aa3689c0026bf96ddfe90d117274c29",
+      "rule_parameters": {
+        "aggregation_seconds": 900,
+        "business_end_hour": 18,
+        "business_start_hour": 9,
+        "business_timezone": "Europe/Istanbul",
+        "business_weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "failure_threshold": 5,
+        "failure_window_seconds": 300,
+        "privileged_accounts": [
+          "root",
+          "admin",
+          "svc_backup"
+        ],
+        "spike_threshold": 20,
+        "spike_window_seconds": 60,
+        "spray_account_threshold": 4,
+        "spray_window_seconds": 600,
+        "success_window_seconds": 600,
+        "suspicious_ips": [
+          "203.0.113.66"
+        ],
+        "version": "1.0"
+      },
+      "status": "Investigating",
+      "version": 2,
+      "created_at": "2026-10-03T07:45:29.313784+00:00",
+      "updated_at": "2026-10-03T07:45:29.315564+00:00",
+      "display_id": "ALR-0007",
+      "evidence": [
+        {
+          "id": 434,
+          "event_id": "demo-00512",
+          "fingerprint": "60c66d27506c134daad1d05f9a9c0058eb81c7cde404f9cdcf7d76465fe02c5b",
+          "timestamp": "2026-10-01T12:45:00.000000+00:00",
+          "source_ip": "203.0.113.66",
+          "username": "omar",
+          "hostname": "idp-01",
+          "service": "sso",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 436,
+          "event_id": "demo-00513",
+          "fingerprint": "f89db3803021afdb693a1ef49886c638926f12b355bbfe5b3402cb017f6db31c",
+          "timestamp": "2026-10-01T12:45:07.000000+00:00",
+          "source_ip": "203.0.113.66",
+          "username": "omar",
+          "hostname": "idp-01",
+          "service": "sso",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 437,
+          "event_id": "demo-00514",
+          "fingerprint": "002caa79adeed8adb60cb27a27d818043a77ce274f03ecd7cb8bcb8e20dfe091",
+          "timestamp": "2026-10-01T12:45:14.000000+00:00",
+          "source_ip": "203.0.113.66",
+          "username": "omar",
+          "hostname": "idp-01",
+          "service": "sso",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 438,
+          "event_id": "demo-00515",
+          "fingerprint": "adde400288a297ff56534bea2c0746f03e0224744c3db33422ca2396ef4890c2",
+          "timestamp": "2026-10-01T12:45:21.000000+00:00",
+          "source_ip": "203.0.113.66",
+          "username": "omar",
+          "hostname": "idp-01",
+          "service": "sso",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 439,
+          "event_id": "demo-00516",
+          "fingerprint": "0b8e9b459f386e9f8334c6039791304fae11e43492c7d40ec91e7b9283b456f9",
+          "timestamp": "2026-10-01T12:45:28.000000+00:00",
+          "source_ip": "203.0.113.66",
+          "username": "omar",
+          "hostname": "idp-01",
+          "service": "sso",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 440,
+          "event_id": "demo-00517",
+          "fingerprint": "db44c62906d410f36c89e6f9e4ae97c0f78f489add5bea04ee3b9f76c573b49e",
+          "timestamp": "2026-10-01T12:46:00.000000+00:00",
+          "source_ip": "203.0.113.66",
+          "username": "omar",
+          "hostname": "idp-01",
+          "service": "sso",
+          "event_type": "authentication_success",
+          "synthetic": 1
+        }
+      ],
+      "evidence_count": 6,
+      "activity": [
+        {
+          "id": 7,
+          "alert_id": 7,
+          "timestamp": "2026-10-03T07:45:29.313784+00:00",
+          "kind": "created",
+          "analyst": "Detection engine",
+          "content": "Alert created from synthetic event evidence."
+        },
+        {
+          "id": 19,
+          "alert_id": 7,
+          "timestamp": "2026-10-03T07:45:29.315564+00:00",
+          "kind": "status",
+          "analyst": "Local analyst",
+          "content": "New → Investigating"
+        },
+        {
+          "id": 20,
+          "alert_id": 7,
+          "timestamp": "2026-10-03T07:45:29.315564+00:00",
+          "kind": "note",
+          "analyst": "Local analyst",
+          "content": "Synthetic review: verified five failures followed by success for the same identity. MFA and user/session ownership are not available in this sample and need validation. No compromise conclusion is established."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fingerprint": "9d0df48aee7325ce17169edc49870698145daa7657d04e9a483ae5d5f2f60503",
+      "rule_id": "SOC-002",
+      "rule_name": "Success after repeated failures",
+      "severity": "critical",
+      "source_ip": "198.51.100.42",
+      "username": "muhammed",
+      "hostname": "vpn-gw-01",
+      "service": "vpn",
+      "first_seen": "2026-10-01T09:10:00.000000+00:00",
+      "last_seen": "2026-10-01T09:12:00.000000+00:00",
+      "explanation": "Successful login for muhammed after 8 failures from the same source to the same host/service within 600s.",
+      "recommendation": "Prioritize triage. Verify the user's session, MFA result, and subsequent activity. Escalate a confirmed unexpected session and document the evidence.",
+      "rule_version": "1.0",
+      "config_hash": "eef76f605d477738a35ecca605d3a3555aa3689c0026bf96ddfe90d117274c29",
+      "rule_parameters": {
+        "aggregation_seconds": 900,
+        "business_end_hour": 18,
+        "business_start_hour": 9,
+        "business_timezone": "Europe/Istanbul",
+        "business_weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "failure_threshold": 5,
+        "failure_window_seconds": 300,
+        "privileged_accounts": [
+          "root",
+          "admin",
+          "svc_backup"
+        ],
+        "spike_threshold": 20,
+        "spike_window_seconds": 60,
+        "spray_account_threshold": 4,
+        "spray_window_seconds": 600,
+        "success_window_seconds": 600,
+        "suspicious_ips": [
+          "203.0.113.66"
+        ],
+        "version": "1.0"
+      },
+      "status": "New",
+      "version": 1,
+      "created_at": "2026-10-03T07:45:29.313784+00:00",
+      "updated_at": "2026-10-03T07:45:29.313784+00:00",
+      "display_id": "ALR-0003",
+      "evidence": [
+        {
+          "id": 197,
+          "event_id": "demo-00481",
+          "fingerprint": "de17319cdd8f45c453bf26549ae68c932d3202df92220a18b09baf5f8792f99b",
+          "timestamp": "2026-10-01T09:10:00.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 198,
+          "event_id": "demo-00482",
+          "fingerprint": "beeab48eb4616552d6efff83dfee8dec1fac0777dff0418a487ba828f2bd82b2",
+          "timestamp": "2026-10-01T09:10:15.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 200,
+          "event_id": "demo-00483",
+          "fingerprint": "9f856e5080cc6845b5abd95f9a5de5ba676542003041ca9fc68bcea2be851ae6",
+          "timestamp": "2026-10-01T09:10:30.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 201,
+          "event_id": "demo-00484",
+          "fingerprint": "67f42f3a16ff5e2f61384ec146e1c35f96d137a2c048d2fd408b845056909793",
+          "timestamp": "2026-10-01T09:10:45.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 202,
+          "event_id": "demo-00485",
+          "fingerprint": "022e1b8721949876e6b954a2055171dbd3c4d376bd839e71c64be5d7e0c19501",
+          "timestamp": "2026-10-01T09:11:00.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 204,
+          "event_id": "demo-00486",
+          "fingerprint": "a95e123de06119dbdfc6a8845f2f4a5e8910db06c31f50a0b007ce952c2f5fa1",
+          "timestamp": "2026-10-01T09:11:15.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 205,
+          "event_id": "demo-00487",
+          "fingerprint": "45bf26f113de7be591deb471ba3e2ae9d8d1d9c90b280de0edca125941fd4523",
+          "timestamp": "2026-10-01T09:11:30.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 206,
+          "event_id": "demo-00488",
+          "fingerprint": "dfea77060d20b6eefa6278ee253e43475bce2d956dbaf8ecfa6ecd6328ca6a5d",
+          "timestamp": "2026-10-01T09:11:45.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_failure",
+          "synthetic": 1
+        },
+        {
+          "id": 207,
+          "event_id": "demo-00489",
+          "fingerprint": "f35c47f829e8a1479227c5a57fdad3f21ce3bfa262a9362a6bed6290b28cbb39",
+          "timestamp": "2026-10-01T09:12:00.000000+00:00",
+          "source_ip": "198.51.100.42",
+          "username": "muhammed",
+          "hostname": "vpn-gw-01",
+          "service": "vpn",
+          "event_type": "authentication_success",
+          "synthetic": 1
+        }
+      ],
+      "evidence_count": 9,
+      "activity": [
+        {
+          "id": 3,
+          "alert_id": 3,
+          "timestamp": "2026-10-03T07:45:29.313784+00:00",
+          "kind": "created",
+          "analyst": "Detection engine",
+          "content": "Alert created from synthetic event evidence."
+        }
+      ]
+    }
+  ]
+}

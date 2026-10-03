@@ -1,0 +1,2 @@
+/* System fonts keep the workspace fast and completely offline. */
+:root{--sans:Inter,"Segoe UI",-apple-system,BlinkMacSystemFont,Arial,sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}

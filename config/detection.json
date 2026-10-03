@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "failure_threshold": 5,
+  "failure_window_seconds": 300,
+  "success_window_seconds": 600,
+  "spray_account_threshold": 4,
+  "spray_window_seconds": 600,
+  "spike_threshold": 20,
+  "spike_window_seconds": 60,
+  "aggregation_seconds": 900,
+  "privileged_accounts": ["root", "admin", "svc_backup"],
+  "suspicious_ips": ["203.0.113.66"],
+  "business_timezone": "Europe/Istanbul",
+  "business_start_hour": 9,
+  "business_end_hour": 18,
+  "business_weekdays": [0, 1, 2, 3, 4]
+}
