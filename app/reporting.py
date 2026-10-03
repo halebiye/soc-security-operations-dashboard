@@ -51,6 +51,20 @@ def render_report(data: dict, output_format: str) -> tuple[str, str]:
                 "",
                 f"Rule: {alert['rule_id']} / v{markdown_text(alert['rule_version'])}",
                 "",
+                (
+                    "MITRE ATT&CK: "
+                    + (
+                        ", ".join(
+                            f"{markdown_text(item['id'])} {markdown_text(item['name'])} ({markdown_text(item['mapping'])})"
+                            for item in alert.get("mitre_attack", [])
+                        )
+                        if alert.get("mitre_attack")
+                        else "No direct mapping"
+                    )
+                ),
+                "",
+                "ATT&CK context: " + markdown_text(alert.get("mitre_attack_note", "")),
+                "",
                 f"Source: {markdown_text(alert['source_ip'])} · Account: {markdown_text(alert['username'])} · Host: {markdown_text(alert['hostname'])} · Service: {markdown_text(alert['service'])}",
                 "",
                 markdown_text(alert["explanation"]),
