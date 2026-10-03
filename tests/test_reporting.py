@@ -24,11 +24,13 @@ def test_every_export_contains_full_matching_evidence_and_journal(client, header
         assert "attachment" in response.headers["content-disposition"]
         assert "MFA validation pending" in response.text
         assert "demo-" in response.text
+        assert "T1110.001" in response.text
     data = client.get("/api/reports/json?severity=critical").json()
     assert data["alert_count"] == 2
     assert data["dataset_summary"]["total_events"] == 553
     assert all(a["severity"] == "critical" for a in data["alerts"])
     assert all(len(a["evidence"]) == a["evidence_count"] for a in data["alerts"])
+    assert all(a["mitre_attack"][0]["id"] == "T1110.001" for a in data["alerts"])
     assert data["synthetic_only"] is True
 
 
