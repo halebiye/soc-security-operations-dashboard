@@ -178,3 +178,14 @@ def test_demo_expected_counts_and_all_rules(config):
 def test_invalid_detection_config_rejected(update):
     with pytest.raises(ValueError):
         DetectionConfig(**update)
+
+
+def test_catalog_exposes_mitre_attack_metadata(config):
+    rules = {rule["id"]: rule for rule in catalog(config)}
+    assert rules["SOC-001"]["mitre_attack"] == [
+        {"id": "T1110.001", "name": "Password Guessing", "mapping": "direct"}
+    ]
+    assert rules["SOC-004"]["mitre_attack"][0]["id"] == "T1110.003"
+    assert rules["SOC-003"]["mitre_attack"][0]["id"] == "T1078"
+    assert rules["SOC-006"]["mitre_attack"] == []
+    assert "no direct" in rules["SOC-006"]["mitre_attack_note"].lower()
