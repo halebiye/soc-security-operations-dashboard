@@ -21,6 +21,8 @@ RULES = [
         "description": "A source repeatedly fails to authenticate to the same account, host, and service.",
         "recommendation": "Check the source and account with the owner. Review lockouts, MFA, and nearby logins; consider containment only after validation.",
         "false_positives": "Stale saved passwords, scheduled tasks, or a user struggling to sign in.",
+        "mitre_attack": [{"id": "T1110.001", "name": "Password Guessing", "mapping": "direct"}],
+        "mitre_attack_note": "Repeated failures against one account align with password-guessing behavior.",
     },
     {
         "id": "SOC-002",
@@ -29,6 +31,8 @@ RULES = [
         "description": "A successful login follows repeated failures for the same source, account, host, and service.",
         "recommendation": "Prioritize triage. Verify the user's session, MFA result, and subsequent activity. Escalate a confirmed unexpected session and document the evidence.",
         "false_positives": "A legitimate user who finally enters the correct password.",
+        "mitre_attack": [{"id": "T1110.001", "name": "Password Guessing", "mapping": "direct"}],
+        "mitre_attack_note": "Repeated failures followed by success are a strong authentication pattern for password guessing triage.",
     },
     {
         "id": "SOC-003",
@@ -37,6 +41,8 @@ RULES = [
         "description": "An explicitly configured privileged account authenticates successfully.",
         "recommendation": "Validate the approved admin change window and source host. Check MFA and the actions performed in this session.",
         "false_positives": "Approved administration or a service account running an expected job.",
+        "mitre_attack": [{"id": "T1078", "name": "Valid Accounts", "mapping": "contextual"}],
+        "mitre_attack_note": "A privileged login can be legitimate; ATT&CK mapping is contextual until account misuse is validated.",
     },
     {
         "id": "SOC-004",
@@ -45,6 +51,8 @@ RULES = [
         "description": "One source generates authentication failures against several distinct accounts.",
         "recommendation": "Review account diversity, timing, and source ownership. Look for successful logins and check whether this is an approved identity test or a broken client.",
         "false_positives": "A shared gateway or a misconfigured application using several accounts.",
+        "mitre_attack": [{"id": "T1110.003", "name": "Password Spraying", "mapping": "direct"}],
+        "mitre_attack_note": "One source failing across multiple accounts aligns with password-spraying behavior.",
     },
     {
         "id": "SOC-005",
@@ -53,6 +61,8 @@ RULES = [
         "description": "A successful login occurs outside the configured local work schedule.",
         "recommendation": "Confirm the user's timezone, shift, travel, and on-call schedule. Correlate with source history and other alerts before escalating.",
         "false_positives": "On-call engineers, remote staff, and planned maintenance.",
+        "mitre_attack": [{"id": "T1078", "name": "Valid Accounts", "mapping": "contextual"}],
+        "mitre_attack_note": "Unusual login timing can support valid-account-abuse triage but is not behavior-specific by itself.",
     },
     {
         "id": "SOC-006",
@@ -61,6 +71,8 @@ RULES = [
         "description": "An authentication event comes from a configured synthetic watchlist IP.",
         "recommendation": "Inspect all activity from this source and related sessions. This local watchlist is a simulation, not live threat intelligence or a reputation verdict.",
         "false_positives": "Outdated watchlist entries or an approved simulation.",
+        "mitre_attack": [],
+        "mitre_attack_note": "Indicator-based source correlation has no direct behavior-specific ATT&CK technique mapping.",
     },
     {
         "id": "SOC-007",
@@ -69,8 +81,21 @@ RULES = [
         "description": "Total authentication volume meets a fixed threshold in a rolling window.",
         "recommendation": "Compare sources, outcome ratios, and service ownership. Check for a batch job, an outage, or a suspicious burst; a threshold alone does not prove an attack.",
         "false_positives": "Shift changes, application retries, or scheduled bulk authentication.",
+        "mitre_attack": [{"id": "T1110", "name": "Brute Force", "mapping": "contextual"}],
+        "mitre_attack_note": "Authentication volume alone is a broad heuristic; map to Brute Force only as contextual triage evidence.",
     },
 ]
+
+
+def rule_metadata(rule_id: str) -> dict:
+    """Return copy-safe analyst metadata for one detection rule."""
+    for rule in RULES:
+        if rule["id"] == rule_id:
+            return {
+                "mitre_attack": [dict(item) for item in rule.get("mitre_attack", [])],
+                "mitre_attack_note": rule.get("mitre_attack_note", ""),
+            }
+    return {"mitre_attack": [], "mitre_attack_note": "No ATT&CK mapping is defined for this rule."}
 
 
 def catalog(config: DetectionConfig) -> list[dict]:
