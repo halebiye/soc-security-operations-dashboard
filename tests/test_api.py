@@ -28,7 +28,9 @@ def test_empty_health_summary_and_static_security(client):
         assert response.headers["x-frame-options"] == "DENY"
         assert "script-src 'self'" in response.headers["content-security-policy"]
     assert client.get("/openapi.json").status_code == 200
-    assert len(client.get("/api/meta").json()["rules"]) == 7
+    rules = client.get("/api/meta").json()["rules"]
+    assert len(rules) == 7
+    assert rules[0]["mitre_attack"][0]["id"] == "T1110.001"
 
 
 def test_demo_idempotence_and_csv_json_deduplication(client, headers):
@@ -54,6 +56,9 @@ def test_demo_idempotence_and_csv_json_deduplication(client, headers):
     assert s["severity"] == {"critical": 2, "high": 14, "medium": 2, "low": 0}
     assert len(client.get("/api/imports").json()["items"]) == 4
     assert client.post("/api/detections/run", headers=headers).json()["alerts_created"] == 0
+    critical = client.get("/api/alerts?severity=critical").json()["items"][0]
+    assert critical["mitre_attack"][0]["id"] == "T1110.001"
+    assert client.get(f"/api/alerts/{critical['id']}").json()["mitre_attack_note"]
 
 
 def test_case_notes_status_restart_and_stale_version(client, headers, config):
