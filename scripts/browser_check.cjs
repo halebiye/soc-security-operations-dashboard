@@ -140,8 +140,9 @@ async function main() {
     documentWidth: document.documentElement.scrollWidth,
     offenders: [...document.querySelectorAll('body *')].map(element => {
       const rect = element.getBoundingClientRect();
-      return {tag: element.tagName, id: element.id, className: element.className?.toString?.() || '', left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width), scrollWidth: element.scrollWidth, clientWidth: element.clientWidth};
-    }).filter(item => item.right > innerWidth + 1 || item.left < -1 || item.scrollWidth > item.clientWidth + 1).slice(0, 20)
+      const style = getComputedStyle(element);
+      return {tag: element.tagName, id: element.id, className: element.className?.toString?.() || '', left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width), scrollWidth: element.scrollWidth, clientWidth: element.clientWidth, minWidth: style.minWidth, whiteSpace: style.whiteSpace, overflowX: style.overflowX};
+    }).filter(item => item.right > innerWidth + 1 || (item.left >= 0 && item.scrollWidth > item.clientWidth + 1)).sort((a,b)=>b.right-a.right).slice(0, 30)
   }));
   if (mobileOverflow.documentWidth > mobileOverflow.viewport) console.error('MOBILE_OVERFLOW_DIAGNOSTIC', JSON.stringify(mobileOverflow));
   check('Mobile dashboard fits the viewport',mobileOverflow.documentWidth <= mobileOverflow.viewport);
