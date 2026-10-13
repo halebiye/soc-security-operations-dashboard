@@ -135,17 +135,7 @@ async function main() {
   check('No remote assets are requested',await page.evaluate(()=>performance.getEntriesByType('resource').every(resource=>new URL(resource.name).origin === location.origin)));
   await page.setViewportSize({width:390,height:844});
   await screenshot(page,'dashboard-mobile.png');
-  const mobileOverflow = await page.evaluate(() => ({
-    viewport: innerWidth,
-    documentWidth: document.documentElement.scrollWidth,
-    offenders: [...document.querySelectorAll('body *')].map(element => {
-      const rect = element.getBoundingClientRect();
-      const style = getComputedStyle(element);
-      return {tag: element.tagName, id: element.id, className: element.className?.toString?.() || '', left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width), scrollWidth: element.scrollWidth, clientWidth: element.clientWidth, minWidth: style.minWidth, whiteSpace: style.whiteSpace, overflowX: style.overflowX};
-    }).filter(item => item.right > innerWidth + 1 || (item.left >= 0 && item.scrollWidth > item.clientWidth + 1)).sort((a,b)=>b.right-a.right).slice(0, 30)
-  }));
-  if (mobileOverflow.documentWidth > mobileOverflow.viewport) console.error('MOBILE_OVERFLOW_DIAGNOSTIC', JSON.stringify(mobileOverflow));
-  check('Mobile dashboard fits the viewport',mobileOverflow.documentWidth <= mobileOverflow.viewport);
+  check('Mobile dashboard fits the viewport',await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth));
   await page.getByRole('button',{name:'Toggle navigation'}).click();
   check('Mobile navigation opens',await page.locator('#sidebar').evaluate(element=>element.classList.contains('open')));
   await page.locator('nav a[data-view="alerts"]').click(); await waitForView(page,'alerts');
