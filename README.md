@@ -4,7 +4,9 @@
 
 Python · FastAPI · SQLite · JavaScript · Chart.js · Pytest · Docker
 
-> **v1.1 Premium UI refresh** — calmer dark theme, softer contrast, improved spacing, refined cards/tables/forms, cleaner mobile behavior, and a more polished analyst workspace. The backend, detection logic, persistence, and report behavior are unchanged.
+> **v1.2 MITRE ATT&CK integration** — detection rules and alerts now carry explicit ATT&CK technique context, distinguish direct mappings from contextual mappings, and include the mapping in analyst views and exported reports. The underlying detection thresholds and database schema remain unchanged.
+>
+> **v1.1 Premium UI refresh** — calmer dark theme, softer contrast, improved spacing, refined cards/tables/forms, cleaner mobile behavior, and a more polished analyst workspace.
 
 
 ![SOC dashboard](docs/screenshots/dashboard-desktop.png)
@@ -74,6 +76,22 @@ Events, detection results, and import metadata commit together. A failure rolls 
 | SOC-005 | Login outside business hours | Success outside Monday–Friday, 09:00–18:00, Europe/Istanbul | Medium |
 | SOC-006 | Synthetic watchlist activity | Any authentication from the configured synthetic IP `203.0.113.66` | High |
 | SOC-007 | Authentication volume spike | At least 20 authentication events across all sources in 60 seconds | High |
+
+### MITRE ATT&CK mapping
+
+The dashboard treats ATT&CK as analyst context, not as proof that an adversary performed a technique. Direct mappings describe behavior closely represented by a rule; contextual mappings are weaker associations that still require validation. Indicator-only rules can intentionally have no direct ATT&CK mapping.
+
+| Rule | ATT&CK technique | Mapping | Rationale |
+| --- | --- | --- | --- |
+| SOC-001 | T1110.001 · Password Guessing | Direct | Repeated failures against one identity |
+| SOC-002 | T1110.001 · Password Guessing | Direct | Repeated failures followed by successful authentication |
+| SOC-003 | T1078 · Valid Accounts | Contextual | Privileged-account use can be legitimate or abused |
+| SOC-004 | T1110.003 · Password Spraying | Direct | One source fails across several accounts |
+| SOC-005 | T1078 · Valid Accounts | Contextual | Unusual login timing can support valid-account-abuse triage |
+| SOC-006 | No direct mapping | Indicator-only | Synthetic watchlist correlation is not behavior-specific |
+| SOC-007 | T1110 · Brute Force | Contextual | Authentication-volume spikes are broad heuristics |
+
+See [MITRE ATT&CK integration notes](docs/MITRE_ATTACK.md) for the design boundaries and analyst interpretation.
 
 Windows include their endpoints. Successful authentication clears that identity's failure streak. Account equality is case-sensitive for correlation; the configured privileged account list is case-insensitive and uses exact names.
 

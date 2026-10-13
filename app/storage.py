@@ -10,7 +10,7 @@ from pathlib import Path
 from time import perf_counter
 
 from app.config import DetectionConfig
-from app.detection import config_hash, detect
+from app.detection import config_hash, detect, rule_metadata
 from app.ingestion import MAX_STORED_EVENTS, ImportErrorDetail
 from app.models import AlertFilters, CaseUpdate, iso_utc, utc_datetime
 
@@ -303,6 +303,7 @@ class Repository:
         alert = dict(row)
         alert["display_id"] = f"ALR-{alert['id']:04d}"
         alert["rule_parameters"] = json.loads(alert["rule_parameters"])
+        alert.update(rule_metadata(alert["rule_id"]))
         return alert
 
     def _list(self, connection, filters: AlertFilters, limit: int | None, offset: int) -> dict:
