@@ -260,7 +260,7 @@ dialog{border-radius:20px;background:linear-gradient(180deg,#121f31,#0e1928);bor
 
 @media(max-width:1180px){:root{--sidebar:214px}main{padding:34px 26px 28px}.topbar{padding:0 26px}.app-footer{padding-left:26px;padding-right:26px}}
 @media(max-width:980px){.case-sidebar{position:static}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-card:first-child{grid-column:1/-1}}
-@media(max-width:720px){main{padding:28px 17px 24px}.topbar{padding:0 17px}.page-heading{margin-bottom:23px}.page-heading h1{font-size:32px}.stats-grid{gap:12px}.stat-card{min-height:118px;border-radius:15px}.panel,.filters{border-radius:16px}.app-footer{padding:17px}.sidebar{padding-top:22px}}
+@media(max-width:720px){.shell{margin-left:0}main{padding:28px 17px 24px}.topbar{padding:0 17px}.page-heading{margin-bottom:23px}.page-heading h1{font-size:32px}.stats-grid{gap:12px}.stat-card{min-height:118px;border-radius:15px}.panel,.filters{border-radius:16px}.app-footer{padding:17px}.sidebar{padding-top:22px}}
 
 
 /* v1.2 MITRE ATT&CK context */
